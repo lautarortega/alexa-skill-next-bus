@@ -1,0 +1,13 @@
+{
+  "name": "mi-bus-munich",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Alexa-hosted skill for upcoming Munich bus departures",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ask-sdk-core": "^2.14.0"
+  }
+}

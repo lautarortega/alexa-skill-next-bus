@@ -1,0 +1,16 @@
+- [x] Clarify Project Requirements
+  - Private Alexa-hosted Custom Skill, Spanish (Spain), configurable home stop.
+- [x] Scaffold the Project
+  - Node.js Alexa Skills Kit project with a Spanish interaction model.
+- [x] Customize the Project
+  - Query departures through a replaceable transport provider.
+- [x] Install Required Extensions
+  - No extensions required.
+- [x] Compile the Project
+  - `npm test` passes with three unit tests.
+- [x] Create and Run Task
+  - Not required; tests are a one-shot validation command.
+- [x] Launch the Project
+  - Deploy and test from the Alexa Developer Console.
+- [x] Ensure Documentation is Complete
+  - README documents source configuration and hosted deployment.

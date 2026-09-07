@@ -1,0 +1,62 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "mi bus de munich",
+      "intents": [
+        {
+          "name": "NextDepartureIntent",
+          "slots": [],
+          "samples": [
+            "cuándo pasa el próximo bus",
+            "cuando pasa el próximo bus",
+            "cuándo viene el próximo bus",
+            "cuando viene el próximo bus",
+            "cuándo pasa mi bus",
+            "cuando pasa mi bus",
+            "dime el próximo bus",
+            "decime el próximo bus",
+            "decime cuándo pasa el próximo bus",
+            "decime cuando pasa el próximo bus",
+            "decime a qué hora pasa el próximo bus",
+            "cuándo pasa el próximo colectivo",
+            "cuando pasa el próximo colectivo",
+            "cuándo viene el próximo colectivo",
+            "cuando viene el próximo colectivo",
+            "cuándo pasa mi colectivo",
+            "cuando pasa mi colectivo",
+            "dime el próximo colectivo",
+            "decime el próximo colectivo",
+            "decime cuándo pasa el próximo colectivo",
+            "decime cuando pasa el próximo colectivo",
+            "decime a qué hora pasa el próximo colectivo",
+            "cuándo pasa el próximo bondi",
+            "cuando pasa el próximo bondi",
+            "cuándo viene el próximo bondi",
+            "cuando viene el próximo bondi",
+            "cuándo pasa mi bondi",
+            "cuando pasa mi bondi",
+            "dime el próximo bondi",
+            "decime el próximo bondi",
+            "decime cuándo pasa el próximo bondi",
+            "decime cuando pasa el próximo bondi",
+            "decime a qué hora pasa el próximo bondi",
+            "próximas salidas",
+            "siguiente bus",
+            "siguiente colectivo",
+            "siguiente bondi",
+            "hay retrasos",
+            "hay algún retraso"
+          ]
+        },
+        { "name": "AMAZON.CancelIntent", "samples": [] },
+        { "name": "AMAZON.HelpIntent", "samples": [] },
+        { "name": "AMAZON.StopIntent", "samples": [] },
+        { "name": "AMAZON.FallbackIntent", "samples": [] },
+        { "name": "AMAZON.NavigateHomeIntent", "samples": [] }
+      ],
+      "types": []
+    },
+    "dialog": { "intents": [] },
+    "prompts": []
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "es-ES": {
+          "summary": "Consulta las próximas salidas de autobús de una parada de Múnich.",
+          "examplePhrases": [
+            "Alexa, abre mi bus de munich",
+            "Alexa, pregunta a mi bus de munich cuándo pasa el próximo bus",
+            "Alexa, pregunta a mi bus de munich si hay retrasos"
+          ],
+          "name": "Mi bus de Múnich",
+          "description": "Skill personal para consultar las próximas salidas de autobús de una parada configurada en Múnich.",
+          "smallIconUri": "https://example.com/icon-108.png",
+          "largeIconUri": "https://example.com/icon-512.png"
+        }
+      },
+      "isAvailableWorldwide": false,
+      "testingInstructions": "Configura una parada válida en lambda/config.js antes de probar la skill.",
+      "category": "TRAVEL_AND_TRANSPORTATION",
+      "distributionCountries": ["DE", "ES"]
+    },
+    "apis": {
+      "custom": {
+        "interfaces": [],
+        "endpoint": { "sourceDir": "lambda" }
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

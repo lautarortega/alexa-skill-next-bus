@@ -1,0 +1,9 @@
+# Dependencies installed locally; Alexa-hosted builds them from package.json.
+lambda/node_modules/
+
+# Personal configuration: this can reveal a home-area stop.
+lambda/config.local.js
+
+# Logs and operating-system files
+npm-debug.log*
+.DS_Store
