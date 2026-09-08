@@ -135,7 +135,7 @@ function speechForDepartures(departures, now = new Date()) {
   let speech = `El próximo ${next.line ? `bus ${next.line}` : 'bus'} hacia ${next.direction} pasa ${minutePhrase(minutesUntil(next.when, now))}, a las ${timeAt(next.when)}.${delay}`;
 
   if (following) {
-    speech += ` El siguiente pasa ${minutePhrase(minutesUntil(following.when, now))}.`;
+    speech += ` El siguiente, ${following.line ? `el bus ${following.line}` : 'el bus'} hacia ${following.direction}, pasa ${minutePhrase(minutesUntil(following.when, now))}, a las ${timeAt(following.when)}.`;
   }
 
   return speech;

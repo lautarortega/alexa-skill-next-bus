@@ -66,5 +66,5 @@ test('builds a concise Spanish response with live delay information', () => {
 
   assert.match(speech, /bus 54 hacia Lorettoplatz pasa en 6 minutos/);
   assert.match(speech, /retraso de 2 minutos/);
-  assert.match(speech, /El siguiente pasa en 15 minutos/);
+  assert.match(speech, /El siguiente, el bus 53 hacia Münchner Freiheit, pasa en 15 minutos, a las 12:15/);
 });
