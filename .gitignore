@@ -4,6 +4,9 @@ lambda/node_modules/
 # Personal configuration: this can reveal a home-area stop.
 lambda/config.local.js
 
+# Local archive for the Alexa-hosted code import.
+/alexa-hosted-lambda.zip
+
 # Logs and operating-system files
 npm-debug.log*
 .DS_Store

@@ -33,9 +33,7 @@ try {
   }
 }
 
-module.exports = {
-  ...defaults,
-  ...local,
-  homeStop: { ...defaults.homeStop, ...local.homeStop },
-  provider: { ...defaults.provider, ...local.provider }
-};
+module.exports = Object.assign({}, defaults, local, {
+  homeStop: Object.assign({}, defaults.homeStop, local.homeStop),
+  provider: Object.assign({}, defaults.provider, local.provider)
+});
