@@ -27,6 +27,29 @@ test('filters only the configured transport and returns them chronologically', a
   assert.deepEqual(departures.map((departure) => departure.line), ['53', '54']);
 });
 
+test('normalizes a real-time MVG departure response', async () => {
+  config.homeStop.id = 'de:09162:336';
+  config.allowedProducts = ['bus'];
+
+  const departures = await getDepartures(async () => [{
+    transportType: 'BUS',
+    label: '178',
+    destination: 'Freimanner Hölzl',
+    plannedDepartureTime: 1788857340000,
+    realtimeDepartureTime: 1788857460000,
+    cancelled: false
+  }]);
+
+  assert.deepEqual(departures, [{
+    line: '178',
+    direction: 'Freimanner Hölzl',
+    when: 1788857460000,
+    plannedWhen: 1788857340000,
+    delay: 120,
+    cancelled: false
+  }]);
+});
+
 test('rounds future departures up to the next minute', () => {
   const now = new Date('2026-09-07T10:00:10.000Z');
   assert.equal(minutesUntil('2026-09-07T10:04:11.000Z', now), 5);

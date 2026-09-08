@@ -5,10 +5,10 @@ const defaults = {
     name: 'tu parada'
   },
 
-  // This community HAFAS endpoint includes Munich local transit and live updates
-  // when operators provide them. It is not an official MVV API.
+  // MVG's public departure endpoint returns planned and real-time departure times.
+  // It is an undocumented endpoint, so it may change without notice.
   provider: {
-    baseUrl: 'https://v6.db.transport.rest',
+    baseUrl: 'https://www.mvg.de',
     requestTimeoutMs: 5000
   },
 

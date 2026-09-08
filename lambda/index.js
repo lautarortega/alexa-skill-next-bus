@@ -37,20 +37,39 @@ function requestJson(url, timeoutMs) {
 }
 
 function departureUrl() {
-  const url = new URL(`/stops/${encodeURIComponent(config.homeStop.id)}/departures`, config.provider.baseUrl);
-  url.searchParams.set('duration', String(config.lookAheadMinutes));
+  const url = new URL('/api/bgw-pt/v3/departures', config.provider.baseUrl);
+  url.searchParams.set('globalId', config.homeStop.id);
   url.searchParams.set('results', String(config.maxResults * 4));
-  url.searchParams.set('remarks', 'true');
-  url.searchParams.set('language', 'de');
+  url.searchParams.set('limit', String(config.maxResults * 4));
+
+  const transportTypes = {
+    bus: 'BUS',
+    tram: 'TRAM',
+    subway: 'UBAHN',
+    suburban: 'SBAHN'
+  };
+
+  if (config.allowedProducts.length === 1 && transportTypes[config.allowedProducts[0]]) {
+    url.searchParams.set('transportTypes', transportTypes[config.allowedProducts[0]]);
+  }
+
   return url;
 }
 
 function productOf(departure) {
-  return String(departure.line && departure.line.product || departure.product || '').toLowerCase();
+  const product = departure.line && departure.line.product || departure.product || departure.transportType || '';
+  const products = {
+    BUS: 'bus',
+    TRAM: 'tram',
+    UBAHN: 'subway',
+    SBAHN: 'suburban'
+  };
+
+  return products[product] || String(product).toLowerCase();
 }
 
 function lineNameOf(departure) {
-  return String(departure.line && (departure.line.name || departure.line.fahrtNr) || departure.lineName || '').trim();
+  return String(departure.line && (departure.line.name || departure.line.fahrtNr) || departure.lineName || departure.label || '').trim();
 }
 
 function allowedDeparture(departure) {
@@ -74,10 +93,14 @@ async function getDepartures(getJson = requestJson) {
     .filter(allowedDeparture)
     .map((departure) => ({
       line: lineNameOf(departure),
-      direction: departure.direction || 'sin destino indicado',
-      when: departure.when || departure.prognosedWhen || departure.plannedWhen,
-      plannedWhen: departure.plannedWhen,
-      delay: Number.isFinite(departure.delay) ? departure.delay : null,
+      direction: departure.direction || departure.destination || 'sin destino indicado',
+      when: departure.when || departure.prognosedWhen || departure.realtimeDepartureTime || departure.plannedWhen || departure.plannedDepartureTime,
+      plannedWhen: departure.plannedWhen || departure.plannedDepartureTime,
+      delay: Number.isFinite(departure.delay)
+        ? departure.delay
+        : Number.isFinite(departure.realtimeDepartureTime) && Number.isFinite(departure.plannedDepartureTime)
+          ? Math.round((departure.realtimeDepartureTime - departure.plannedDepartureTime) / 1000)
+          : null,
       cancelled: Boolean(departure.cancelled)
     }))
     .filter((departure) => departure.when && !departure.cancelled)

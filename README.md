@@ -4,14 +4,14 @@ Skill privada de Alexa en español para saber en cuántos minutos llega el próx
 
 ## Fuente de salidas
 
-La fuente por defecto es `transport.rest`, un servicio comunitario compatible con HAFAS que incluye el transporte local de Múnich y transmite previsiones en tiempo real cuando el operador las facilita. No es una API oficial de MVV/MVG.
+La fuente por defecto es el endpoint público de salidas de MVG. Expone salidas planificadas y previsiones en tiempo real. No está documentado como API pública estable por MVV/MVG, por lo que puede cambiar sin aviso.
 
 El código concentra esa integración en [lambda/index.js](lambda/index.js), por lo que puede sustituirse cuando MVV facilite una API oficial en tiempo real. No se almacenan datos de ubicación ni datos personales.
 
 ## Configurar la parada
 
-1. Busca la parada mediante `https://v6.db.transport.rest/locations?query=NOMBRE_DE_LA_PARADA&results=10` en el navegador. Sustituye los espacios del nombre por `%20`.
-2. Localiza la parada correcta y copia su campo `id`.
+1. Busca la parada mediante `https://www.mvg.de/api/bgw-pt/v3/locations?query=NOMBRE_DE_LA_PARADA` en el navegador. Sustituye los espacios del nombre por `%20`.
+2. Localiza la parada correcta y copia su campo `globalId`.
 3. Para desarrollo local, copia [lambda/config.local.example.js](lambda/config.local.example.js) como `lambda/config.local.js` y completa la parada. Este archivo está excluido por [`.gitignore`](.gitignore), por lo que nunca se sube a GitHub.
 4. Opcionalmente, deja `allowedProducts: ['bus']` para solo autobuses; usa `[]` para incluir todos los transportes. `allowedLines` permite limitar la respuesta a líneas concretas.
 
