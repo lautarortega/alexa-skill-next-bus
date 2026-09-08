@@ -38,7 +38,11 @@ allowedLines: ['54', '153']
 
 Para mantenerla privada, úsala solo en la fase de desarrollo con la misma cuenta de Amazon que usas en tus dispositivos Alexa. No la envíes a certificación ni la publiques.
 
-El archivo [skill-package/skill.json](skill-package/skill.json) es una plantilla para una futura importación con ASK CLI. Las URLs de iconos son marcadores de posición; antes de publicar la skill habría que reemplazarlas por URLs HTTPS reales y completar los requisitos de publicación.
+El archivo [skill-package/skill.json](skill-package/skill.json) es una plantilla para una futura importación con ASK CLI. Antes de publicar la skill habría que completar los demás requisitos de publicación.
+
+## Iconos de distribución
+
+Los iconos PNG para distribución están en [assets/icons/icon-108.png](assets/icons/icon-108.png) y [assets/icons/icon-512.png](assets/icons/icon-512.png). El manifiesto ya apunta a sus URLs HTTPS públicas en GitHub. Si los cargas manualmente desde la consola, usa el de 108 × 108 píxeles como icono pequeño y el de 512 × 512 píxeles como icono grande.
 
 ## Ejecutar pruebas locales
 

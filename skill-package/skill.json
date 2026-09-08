@@ -11,8 +11,8 @@
           ],
           "name": "Mi bus de Múnich",
           "description": "Skill personal para consultar las próximas salidas de autobús de una parada configurada en Múnich.",
-          "smallIconUri": "https://example.com/icon-108.png",
-          "largeIconUri": "https://example.com/icon-512.png"
+          "smallIconUri": "https://raw.githubusercontent.com/lautarortega/alexa-skill-next-bus/main/assets/icons/icon-108.png",
+          "largeIconUri": "https://raw.githubusercontent.com/lautarortega/alexa-skill-next-bus/main/assets/icons/icon-512.png"
         }
       },
       "isAvailableWorldwide": false,

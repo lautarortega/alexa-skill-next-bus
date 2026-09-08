@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Mi bus de Múnich</title>
+  <desc id="desc">A yellow bus in front of a Munich-blue circular background.</desc>
+  <defs>
+    <linearGradient id="background" x1="56" y1="42" x2="456" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A5D9F"/>
+      <stop offset="1" stop-color="#083B72"/>
+    </linearGradient>
+    <linearGradient id="bus" x1="158" y1="122" x2="365" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE36B"/>
+      <stop offset="1" stop-color="#F5B700"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#background)"/>
+  <circle cx="256" cy="256" r="195" fill="none" stroke="#55C5F5" stroke-width="12" opacity=".8"/>
+  <path d="M128 160c0-37 30-67 67-67h122c37 0 67 30 67 67v199c0 23-18 41-41 41h-16c-5 0-10-4-10-10v-19H195v19c0 6-5 10-10 10h-16c-23 0-41-18-41-41V160Z" fill="url(#bus)"/>
+  <rect x="161" y="136" width="190" height="103" rx="18" fill="#173B5C"/>
+  <rect x="181" y="157" width="150" height="61" rx="10" fill="#5BD0F8"/>
+  <path d="M256 157v61" stroke="#173B5C" stroke-width="12" opacity=".38"/>
+  <rect x="163" y="263" width="188" height="48" rx="13" fill="#173B5C"/>
+  <rect x="180" y="278" width="78" height="18" rx="9" fill="#FFF5BB"/>
+  <rect x="277" y="275" width="57" height="23" rx="7" fill="#55C5F5"/>
+  <rect x="171" y="330" width="42" height="18" rx="9" fill="#E56B2E"/>
+  <rect x="299" y="330" width="42" height="18" rx="9" fill="#E56B2E"/>
+  <circle cx="195" cy="380" r="28" fill="#173B5C"/>
+  <circle cx="317" cy="380" r="28" fill="#173B5C"/>
+  <circle cx="195" cy="380" r="10" fill="#D8EFF9"/>
+  <circle cx="317" cy="380" r="10" fill="#D8EFF9"/>
+  <path d="M98 294h39M375 294h39" stroke="#55C5F5" stroke-width="12" stroke-linecap="round"/>
+</svg>
