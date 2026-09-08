@@ -56,15 +56,14 @@ test('rounds future departures up to the next minute', () => {
   assert.equal(minutesUntil('2026-09-07T09:59:00.000Z', now), 0);
 });
 
-test('builds a concise Spanish response with live delay information', () => {
+test('builds a concise Spanish response with live delay information and limits to 2 departures', () => {
   config.homeStop.name = 'Casa';
   const now = new Date('2026-09-07T10:00:00.000Z');
   const speech = speechForDepartures([
-    { line: '54', direction: 'Lorettoplatz', when: '2026-09-07T10:06:00.000Z', delay: 120 },
-    { line: '53', direction: 'Münchner Freiheit', when: '2026-09-07T10:15:00.000Z', delay: 0 }
+    { line: '54', direction: 'Petuelring', when: '2026-09-07T10:02:00.000Z', delay: 60 },
+    { line: '53', direction: 'Frankfurter Ring', when: '2026-09-07T10:10:00.000Z', delay: 0 },
+    { line: '54', direction: 'Petuelring', when: '2026-09-07T10:20:00.000Z', delay: 0 }
   ], now);
 
-  assert.match(speech, /bus 54 hacia Lorettoplatz pasa en 6 minutos/);
-  assert.match(speech, /retraso de 2 minutos/);
-  assert.match(speech, /El siguiente, el bus 53 hacia Münchner Freiheit, pasa en 15 minutos, a las 12:15/);
+  assert.equal(speech, 'Petuelring 2 minutos, a las 12:02 con retraso de 1. Frankfurter Ring 10 minutos, a las 12:10.');
 });

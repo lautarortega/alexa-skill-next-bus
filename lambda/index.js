@@ -112,10 +112,6 @@ function minutesUntil(when, now = new Date()) {
   return Math.max(0, Math.ceil((new Date(when).getTime() - now.getTime()) / 60000));
 }
 
-function minutePhrase(minutes) {
-  return minutes === 0 ? 'ahora' : `en ${minutes} ${minutes === 1 ? 'minuto' : 'minutos'}`;
-}
-
 function timeAt(when) {
   return new Intl.DateTimeFormat('es-ES', {
     timeZone: config.timeZone,
@@ -130,15 +126,15 @@ function speechForDepartures(departures, now = new Date()) {
     return `No encontré próximos servicios configurados en ${config.homeStop.name}.`;
   }
 
-  const [next, following] = departures;
-  const delay = next.delay > 0 ? ` Tiene un retraso de ${Math.round(next.delay / 60)} minutos.` : '';
-  let speech = `El próximo ${next.line ? `bus ${next.line}` : 'bus'} hacia ${next.direction} pasa ${minutePhrase(minutesUntil(next.when, now))}, a las ${timeAt(next.when)}.${delay}`;
+  return departures.slice(0, 2).map((departure) => {
+    const mins = minutesUntil(departure.when, now);
+    const minText = `${mins} ${mins === 1 ? 'minuto' : 'minutos'}`;
+    const time = timeAt(departure.when);
+    const delayMinutes = departure.delay > 0 ? Math.round(departure.delay / 60) : 0;
+    const delayText = delayMinutes > 0 ? ` con retraso de ${delayMinutes}` : '';
 
-  if (following) {
-    speech += ` El siguiente, ${following.line ? `el bus ${following.line}` : 'el bus'} hacia ${following.direction}, pasa ${minutePhrase(minutesUntil(following.when, now))}, a las ${timeAt(following.when)}.`;
-  }
-
-  return speech;
+    return `${departure.direction} ${minText}, a las ${time}${delayText}`;
+  }).join('. ') + '.';
 }
 
 async function departureResponse(handlerInput) {

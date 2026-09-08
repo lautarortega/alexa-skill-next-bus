@@ -17,7 +17,7 @@ const defaults = {
 
   // Optionally restrict replies to line names, such as ['54', '153'].
   allowedLines: [],
-  maxResults: 3,
+  maxResults: 2,
   lookAheadMinutes: 120,
   timeZone: 'Europe/Berlin'
 };
