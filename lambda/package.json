@@ -8,6 +8,7 @@
     "test": "node --test"
   },
   "dependencies": {
-    "ask-sdk-core": "^2.14.0"
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.29.0"
   }
 }
