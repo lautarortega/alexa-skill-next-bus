@@ -141,20 +141,35 @@ function speechForDepartures(departures, now = new Date()) {
   return speech;
 }
 
+async function departureResponse(handlerInput) {
+  if (!isStopConfigured()) {
+    return handlerInput.responseBuilder
+      .speak('Aún no configuraste la parada. Edita el identificador de parada en el archivo de configuración y vuelve a desplegar la skill.')
+      .getResponse();
+  }
+
+  try {
+    const departures = await getDepartures();
+    return handlerInput.responseBuilder.speak(speechForDepartures(departures)).getResponse();
+  } catch (error) {
+    console.error('Unable to retrieve departures', error);
+    return handlerInput.responseBuilder
+      .speak('No pude consultar las salidas en este momento. Inténtalo de nuevo en unos minutos.')
+      .getResponse();
+  }
+}
+
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
   },
-  handle(handlerInput) {
+  async handle(handlerInput) {
     const userId = handlerInput.requestEnvelope.session && handlerInput.requestEnvelope.session.user.userId;
     if (userId === 'alexa-lambda-availability') {
       return handlerInput.responseBuilder.getResponse();
     }
 
-    return handlerInput.responseBuilder
-      .speak('Puedes preguntarme cuándo pasa el próximo bus, colectivo o bondi por tu parada configurada.')
-      .reprompt('Por ejemplo, di: cuándo pasa el próximo colectivo.')
-      .getResponse();
+    return departureResponse(handlerInput);
   }
 };
 
@@ -164,21 +179,7 @@ const NextDepartureIntentHandler = {
       && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NextDepartureIntent';
   },
   async handle(handlerInput) {
-    if (!isStopConfigured()) {
-      return handlerInput.responseBuilder
-        .speak('Aún no configuraste la parada. Edita el identificador de parada en el archivo de configuración y vuelve a desplegar la skill.')
-        .getResponse();
-    }
-
-    try {
-      const departures = await getDepartures();
-      return handlerInput.responseBuilder.speak(speechForDepartures(departures)).getResponse();
-    } catch (error) {
-      console.error('Unable to retrieve departures', error);
-      return handlerInput.responseBuilder
-        .speak('No pude consultar las salidas en este momento. Inténtalo de nuevo en unos minutos.')
-        .getResponse();
-    }
+    return departureResponse(handlerInput);
   }
 };
 

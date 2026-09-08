@@ -34,7 +34,7 @@ allowedLines: ['54', '153']
 2. En la Alexa Developer Console, crea una skill **Custom**, idioma **Spanish (ES)** y hosting **Alexa-Hosted (Node.js)**. En la pantalla de plantillas, selecciona **Import skill** e indica la URL `.git` de tu repositorio público.
 3. Al terminar la importación, abre **Code** y edita [lambda/config.js](lambda/config.js) dentro de la consola Alexa. Sustituye el ID y nombre de marcador en `homeStop` por tu parada real. Esos cambios quedan en los recursos privados de Alexa-hosted, no en el repositorio GitHub público.
 4. En **Build > Interaction Model > JSON Editor**, verifica el modelo de [skill-package/interactionModels/custom/es-ES.json](skill-package/interactionModels/custom/es-ES.json) y pulsa **Build Model** si hiciste cambios.
-5. Pulsa **Deploy** y prueba desde la pestaña **Test** con: “abre mi bus de munich” y después “decime cuándo pasa el próximo bondi”.
+5. Pulsa **Deploy** y prueba desde la pestaña **Test** con: “abre mi bus de munich”. La skill responde inmediatamente con las próximas salidas. También puedes preguntar después: “decime cuándo pasa el próximo bondi”.
 
 Para mantenerla privada, úsala solo en la fase de desarrollo con la misma cuenta de Amazon que usas en tus dispositivos Alexa. No la envíes a certificación ni la publiques.
 
